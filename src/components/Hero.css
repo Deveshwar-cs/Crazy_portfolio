@@ -1,0 +1,224 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,400&family=JetBrains+Mono:wght@400;500&display=swap");
+
+:root {
+  --ink: #0f0f0e;
+  --paper: #f4efe6;
+  --muted: #7a756c;
+  --line: #2420201a;
+  --accent: #ff5a1f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Fraunces", Georgia, serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.mono {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* ---------- NAV ---------- */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 40px;
+  z-index: 100;
+  mix-blend-mode: difference;
+  color: #fff;
+}
+.nav a {
+  color: inherit;
+  text-decoration: none;
+}
+.nav ul {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nav__logo {
+  font-size: 20px;
+  font-style: italic;
+}
+
+/* ---------- HERO ---------- */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  padding: 160px 40px 80px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.hero__eyebrow {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid var(--line);
+  padding-top: 16px;
+}
+.hero__title {
+  font-size: clamp(68px, 14vw, 220px);
+  line-height: 0.9;
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  margin: 40px 0 0;
+  position: relative;
+  z-index: 2;
+}
+.hero__title em {
+  font-style: italic;
+  color: var(--accent);
+  font-weight: 400;
+}
+.hero__layer {
+  position: absolute;
+  border-radius: 8px;
+  overflow: hidden;
+  will-change: transform;
+  box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.25);
+}
+.hero__layer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.hero__layer--1 {
+  width: 220px;
+  height: 300px;
+  top: 22%;
+  right: 8%;
+}
+.hero__layer--2 {
+  width: 160px;
+  height: 220px;
+  top: 58%;
+  left: 12%;
+}
+.hero__layer--3 {
+  width: 120px;
+  height: 160px;
+  top: 12%;
+  left: 38%;
+}
+.hero__meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 60px;
+}
+.hero__meta p {
+  max-width: 360px;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--muted);
+  margin: 0;
+  font-family: "JetBrains Mono", monospace;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    padding: 120px 24px 60px;
+  }
+  .hero__layer--1 {
+    width: 140px;
+    height: 180px;
+    right: 4%;
+  }
+  .hero__layer--2 {
+    width: 100px;
+    height: 140px;
+    left: 4%;
+  }
+  .hero__layer--3 {
+    display: none;
+  }
+  .nav {
+    padding: 20px 24px;
+  }
+  .nav ul {
+    gap: 18px;
+  }
+}
+
+.hero__name-block {
+  position: relative;
+  z-index: 2;
+}
+
+.hero__role {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+  display: block;
+}
+
+.hero__stack {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.hero__stack span {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid #2420203a;
+  padding: 5px 12px;
+  border-radius: 999px;
+  color: var(--muted);
+}
+
+.hero__meta-right {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-end;
+}
+
+.hero__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 12px 22px;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.hero__cta:hover {
+  background: var(--accent);
+}

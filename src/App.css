@@ -1,0 +1,9 @@
+/* Keep root neutral; component-level styles handle everything */
+.App {
+  min-height: 100vh;
+  background: #fafaf7;
+}
+
+html {
+  scroll-behavior: smooth;
+}

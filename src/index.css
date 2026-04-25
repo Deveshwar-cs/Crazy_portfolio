@@ -1,0 +1,258 @@
+@import "tailwindcss";
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap");
+
+body {
+  margin: 0;
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #fafaf7;
+  color: #0b1a12;
+}
+
+code {
+  font-family:
+    source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+/* ---------- Animated gradient background ---------- */
+@keyframes meshMove {
+  0% {
+    transform: translate3d(0%, 0%, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(6%, -4%, 0) scale(1.08);
+  }
+  66% {
+    transform: translate3d(-5%, 5%, 0) scale(0.96);
+  }
+  100% {
+    transform: translate3d(0%, 0%, 0) scale(1);
+  }
+}
+
+@keyframes meshMoveAlt {
+  0% {
+    transform: translate3d(0%, 0%, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-7%, 6%, 0) scale(1.1);
+  }
+  100% {
+    transform: translate3d(0%, 0%, 0) scale(1);
+  }
+}
+
+@keyframes floatY {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-fadeUp {
+  animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.animate-fadeIn {
+  animation: fadeIn 1.2s ease-out both;
+}
+.animate-float {
+  animation: floatY 6s ease-in-out infinite;
+}
+
+.delay-1 {
+  animation-delay: 0.1s;
+}
+.delay-2 {
+  animation-delay: 0.25s;
+}
+.delay-3 {
+  animation-delay: 0.4s;
+}
+.delay-4 {
+  animation-delay: 0.55s;
+}
+.delay-5 {
+  animation-delay: 0.7s;
+}
+
+/* Grain overlay */
+.grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.06;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+/* Glass card */
+.glass {
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(22px) saturate(140%);
+  -webkit-backdrop-filter: blur(22px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.9) inset,
+    0 20px 40px -20px rgba(6, 43, 28, 0.25),
+    0 8px 20px -12px rgba(6, 43, 28, 0.12);
+}
+
+.glass-soft {
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(14px) saturate(130%);
+  -webkit-backdrop-filter: blur(14px) saturate(130%);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+/* Tag pill shimmer */
+.shimmer-border {
+  background: linear-gradient(
+    110deg,
+    rgba(255, 255, 255, 0.5) 10%,
+    rgba(255, 255, 255, 0.9) 30%,
+    rgba(255, 255, 255, 0.5) 50%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 6s linear infinite;
+}
+
+/* 3D tilt container */
+.tilt-3d {
+  transform: perspective(1200px) rotateX(2deg) rotateY(-2deg);
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.tilt-3d:hover {
+  transform: perspective(1200px) rotateX(0deg) rotateY(0deg) translateY(-4px);
+}
+
+/* CTA */
+.cta-primary {
+  position: relative;
+  background: #0b1a12;
+  color: #fafaf7;
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    background 0.35s ease;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.15) inset,
+    0 14px 30px -12px rgba(6, 43, 28, 0.55);
+}
+.cta-primary:hover {
+  background: #0e2a1c;
+  transform: translateY(-2px);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.2) inset,
+    0 22px 40px -14px rgba(6, 43, 28, 0.55);
+}
+.cta-ghost {
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease;
+}
+.cta-ghost:hover {
+  background: rgba(255, 255, 255, 0.8);
+  transform: translateY(-2px);
+}
+
+/* Selection */
+::selection {
+  background: #0b1a12;
+  color: #fafaf7;
+}
+
+@layer base {
+  :root {
+    --background: 60 20% 97%;
+    --foreground: 150 40% 7%;
+    --card: 0 0% 100%;
+    --card-foreground: 150 40% 7%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 150 40% 7%;
+    --primary: 150 40% 7%;
+    --primary-foreground: 60 20% 97%;
+    --secondary: 150 10% 94%;
+    --secondary-foreground: 150 40% 7%;
+    --muted: 150 10% 94%;
+    --muted-foreground: 150 10% 40%;
+    --accent: 150 10% 94%;
+    --accent-foreground: 150 40% 7%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 60 20% 97%;
+    --border: 150 10% 88%;
+    --input: 150 10% 88%;
+    --ring: 150 40% 7%;
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Add to your global CSS file */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}

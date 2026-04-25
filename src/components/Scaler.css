@@ -1,0 +1,51 @@
+.scaler {
+  height: 380vh;
+}
+
+.scaler__inner {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+}
+
+/* IMAGE */
+.scaler__img {
+  width: 30vw;
+  height: 50vh;
+  overflow: hidden;
+  will-change: transform;
+}
+
+.scaler__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.special_text {
+  color: #ff5a1f;
+}
+
+/* TEXT OVERLAY */
+.scaler__overlay {
+  position: absolute;
+  text-align: center;
+  color: white;
+
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.scaler__overlay h2 {
+  font-family: "Fraunces", serif;
+  font-size: clamp(32px, 5vw, 72px);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}

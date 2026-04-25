@@ -1,0 +1,97 @@
+/* =========================
+   MARQUEE WRAPPER
+========================= */
+.marquee {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  /* Consolidated padding: 45px top/bottom, 0 left/right */
+  padding: 45px 0;
+  /* Switched to border top/bottom so it doesn't create weird side borders at 100% width */
+  border-top: 0.7px solid;
+  border-bottom: 0.7px solid;
+  display: flex;
+}
+
+/* fade edges (premium touch) */
+.marquee::before,
+.marquee::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 120px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.marquee::before {
+  left: 0;
+  background: linear-gradient(to right, #0b0b0b, transparent);
+}
+
+.marquee::after {
+  right: 0;
+  background: linear-gradient(to left, #0b0b0b, transparent);
+}
+
+/* =========================
+   TRACK
+========================= */
+.marquee__track {
+  display: flex;
+  white-space: nowrap;
+  width: fit-content;
+  /* Removed 'gap' to ensure perfect -50% loop mathematically */
+  animation: scroll 25s linear infinite;
+  will-change: transform;
+}
+
+/* Optional premium touch: Pause marquee when the user hovers over it */
+.marquee:hover .marquee__track {
+  animation-play-state: paused;
+}
+
+/* =========================
+   TEXT STYLE (FRAUNCES)
+========================= */
+.marquee__track span {
+  font-family: "Fraunces", serif;
+  font-size: clamp(32px, 6vw, 120px); /* Adjusted clamp for smoother scaling */
+  font-style: italic;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  /* padding-right replaces the gap, ensuring the width calculates perfectly for the loop */
+  padding-right: 80px;
+}
+
+/* =========================
+   ANIMATION
+========================= */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  .marquee {
+    padding: 24px 0; /* Reduced height bulk on mobile */
+  }
+
+  .marquee__track span {
+    font-size: 24px; /* Slightly larger than 14px for better legibility on mobile */
+    padding-right: 40px; /* Reduced gap size for smaller screens */
+  }
+
+  .marquee::before,
+  .marquee::after {
+    width: 60px; /* Thinner fade gradient to avoid masking too much small text */
+  }
+}

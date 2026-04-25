@@ -1,0 +1,173 @@
+/* =========================
+   FOOTER BASE
+========================= */
+.footer {
+  width: 100%;
+  padding: 80px 40px 40px; /* Added more padding for breathing room */
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+
+  background: #0b0b0b;
+  color: #ffffff;
+}
+
+/* Grouping the top content */
+.footer__main {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end; /* Aligning to the bottom edge looks more modern */
+  gap: 60px;
+}
+
+/* =========================
+   LEFT HEADING
+========================= */
+.footer__left h3 {
+  font-size: clamp(40px, 7vw, 110px); /* Pushed the max size slightly higher */
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  max-width: 900px;
+  margin: 0;
+}
+
+.footer__left em {
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  font-weight: 400;
+  color: #ff5a1f;
+  transition:
+    text-shadow 0.4s ease,
+    color 0.4s ease;
+}
+
+/* Aestheic glow effect on hover */
+.footer__left em.glow-hover:hover {
+  text-shadow: 0 0 24px rgba(255, 90, 31, 0.7);
+  color: #ff7647;
+  cursor: default;
+}
+
+/* =========================
+   RIGHT META 
+========================= */
+.footer__right {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  font-family: "JetBrains Mono", monospace;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.75);
+  min-width: 220px;
+}
+
+.footer__label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #ff5a1f;
+  margin-bottom: 8px;
+}
+
+/* =========================
+   ANIMATED LINKS
+========================= */
+a.hover-underline {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  position: relative;
+  width: fit-content;
+  padding-bottom: 2px;
+  transition: color 0.3s ease;
+}
+
+/* The magic for the expanding underline */
+a.hover-underline::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background-color: #ffffff;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+a.hover-underline:hover {
+  color: #ffffff;
+}
+
+a.hover-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* =========================
+   BOTTOM BAR (NEW)
+========================= */
+.footer__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1); /* Subtle divider */
+
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.footer__socials {
+  display: flex;
+  gap: 32px;
+}
+
+.footer__copyright {
+  margin: 0;
+}
+
+.footer__back-to-top {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.8);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  cursor: pointer;
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.footer__back-to-top:hover {
+  color: #ffffff;
+  transform: translateY(-4px); /* Gently floats up on hover */
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  .footer {
+    padding: 60px 24px 32px;
+  }
+
+  .footer__main {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer__bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .footer__back-to-top {
+    align-self: flex-start;
+    padding: 0;
+  }
+}

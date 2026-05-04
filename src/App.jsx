@@ -1,10 +1,10 @@
 import Footer from "./components/Footer";
-import GridSection from "./components/GridSection";
 import Hero from "./components/Hero";
 import HeroContent from "./components/HeroContent";
-import Horizontal from "./components/HorizontalProjects";
 import Marquee from "./components/Marquee";
 import Scaler from "./components/Scaler";
+import Projects from "./components/Projects";
+import Process from "./components/Process";
 import Skills from "./components/Skills";
 
 export default function App() {
@@ -12,10 +12,10 @@ export default function App() {
     <div>
       <Hero />
       <HeroContent />
-      <Skills />
+      <Process />
       <Scaler />
-      <Horizontal />
-      <GridSection />
+      <Projects />
+      <Skills />
       <Marquee />
       <Footer />
     </div>
